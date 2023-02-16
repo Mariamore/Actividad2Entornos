@@ -43,6 +43,12 @@ public class Jugador {
 		this.numeroTarjetasRojas = numeroTarjetasRojas;
 	}
 	
+	//Generamos el constrtuctor por defecto
+
+	public Jugador() {
+		super();
+	}
+	
 	//Generamos el constructor con todos los atributos
 	
 	public Jugador(int dorsal, int numeroTarjetasAmarillas, int numeroTarjetasRojas) {

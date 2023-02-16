@@ -25,14 +25,7 @@ public class Soldado {
 	private boolean estaMuerto;
 	private int numeroBalas;
 	
-//Generamos el constructor con todos los atributos	
-	public Soldado(boolean estaMuerto, int numeroBalas) {
-		super();
-		this.estaMuerto = estaMuerto;
-		this.numeroBalas = numeroBalas;
-	}
-	
-//Generamos los getters y setters
+	//Generamos los getters y setters
 	
 	public boolean isEstaMuerto() {
 		return estaMuerto;
@@ -45,6 +38,19 @@ public class Soldado {
 	}
 	public void setNumeroBalas(int numeroBalas) {
 		this.numeroBalas = numeroBalas;
+	}
+	
+	//Generamos el constructor por defecto
+	
+	public Soldado() {
+		super();
+	}
+	
+	//Generamos el constructor con todos los atributos	
+	public Soldado(boolean estaMuerto, int numeroBalas) {
+			super();
+			this.estaMuerto = estaMuerto;
+			this.numeroBalas = numeroBalas;
 	}
 	
 	/**
