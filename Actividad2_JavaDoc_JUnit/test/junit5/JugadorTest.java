@@ -2,15 +2,28 @@ package junit5;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import programa.Jugador;
 class JugadorTest {
+	private Jugador j1;
+	
+	/*
+	 * Primero generamos una anotación @BeforeEach para que antes de cada prueba se nos genere un nuevo objeto 
+	 * de la clase jugador.
+	 */
+	
+	@BeforeEach
+	void setUp() throws Exception{
+		j1 = new Jugador();
+	}
+	
 	/*
 	 * Primero vamos a hacer la prueba del método ponerDorsal, comprobando si al pasarle el atributo dorsal con un
 	 * valor superior a 1 y menor de 30 (por ejemplo 24), le asigna dicho dorsal al jugador que llama a dicho método.
-	 * Para ello crearemos un objeto de la clase Jugador cuyo atributo dorsal sea 0, llamaremos al método ponerDorsal 
-	 * con dicho jugador, pasándole 24 como int dorsal. Si el método funciona adecuadamente, deberá asignar el valor 24 
-	 * al atributo dorsal del jugador, procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
+	 * Para ello llamaremos al método ponerDorsal con el Jugador j1, pasándole 24 como int dorsal. Si el método funciona
+	 * adecuadamente, deberá asignar el valor 24 al atributo dorsal del jugador, procederemos a crear una variable de tipo 
+	 * entero denominada dorsalObtenido. 
 	 * Para comprobar que el método ha funcionado bien, crearemos una variable de tipo entero denominada dorsalEsperado 
 	 * cuyo valor será 24 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
 	 * La prueba será satisfactoria si ambos valores son iguales
@@ -18,8 +31,6 @@ class JugadorTest {
 	@Test
 	public void asignaDorsal() {
 		System.out.println("Test 1");
-		
-		Jugador j1 = new Jugador(0, 0, 0);
 		
 		j1.ponerDorsal(24);
 		
@@ -31,9 +42,9 @@ class JugadorTest {
 	
 	/*
 	 * Ahora comprobaremos si el método ponerDorsal funciona adecuadamente al pasarle el atributo dorsal con el valor 1.
-	 * Para ello crearemos un objeto de la clase Jugador cuyo atributo dorsal sea 0, llamaremos al método ponerDorsal 
-	 * con dicho jugador, pasándole 1 como int dorsal. Si el método funciona adecuadamente, deberá asignar el valor 1 
-	 * al atributo dorsal del jugador, procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
+	 * Para ello llamaremos al método ponerDorsal con el Jugador j1, pasándole 1 como int dorsal. Si el método funciona 
+	 * adecuadamente, deberá asignar el valor 1 al atributo dorsal del jugador, procederemos a crear una variable de tipo 
+	 * entero denominada dorsalObtenido. 
 	 * Para comprobar el buen funcionamiento del método, crearemos una variable de tipo entero denominada dorsalEsperado 
 	 * cuyo valor será 1 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
 	 * La prueba será satisfactoria si ambos valores son iguales
@@ -42,8 +53,6 @@ class JugadorTest {
 	@Test
 	public void asignaDorsal1() {
 		System.out.println("Test 2");
-		
-		Jugador j1 = new Jugador(0, 0, 0);
 		
 		j1.ponerDorsal(1);
 		
@@ -55,10 +64,10 @@ class JugadorTest {
 	
 	/*
 	 * Ahora comprobaremos si el método ponerDorsal funciona adecuadamente al pasarle el atributo dorsal con el valor 30.
-	 * Para ello crearemos un objeto de la clase Jugador cuyo atributo dorsal sea 0, llamaremos al método ponerDorsal 
-	 * con dicho jugador, pasándole 30 como int dorsal. Si el método funciona adecuadamente, deberá asignar el valor 30 
-	 * al atributo dorsal del jugador, procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
-	 * Para comprobar que el método funciona como es debido, crearemos una variable de tipo entero denominada dorsalEsperado
+	 * Para ello llamaremos al método ponerDorsal con el Jugador j1, pasándole 30 como int dorsal. Si el método funciona 
+	 * adecuadamente, deberá asignar el valor 30 al atributo dorsal del jugador, procederemos a crear una variable de tipo 
+	 * entero denominada dorsalObtenido. 
+	 * Para comprobar el buen funcionamiento del método, crearemos una variable de tipo entero denominada dorsalEsperado 
 	 * cuyo valor será 30 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
 	 * La prueba será satisfactoria si ambos valores son iguales
 	 */
@@ -66,8 +75,6 @@ class JugadorTest {
 	@Test
 	public void asignaDorsal30() {
 		System.out.println("Test 3");
-		
-		Jugador j1 = new Jugador(0, 0, 0);
 		
 		j1.ponerDorsal(30);
 		
@@ -79,19 +86,17 @@ class JugadorTest {
 	
 	/*
 	 * Ahora comprobaremos si el método ponerDorsal funciona adecuadamente al pasarle el atributo dorsal con el valor -5.
-	 * Para ello crearemos un objeto de la clase Jugador cuyo atributo dorsal sea 0, llamaremos al método ponerDorsal 
-	 * con dicho jugador, pasándole -5 como int dorsal. Si el método funciona adecuadamente, deberá asignar el valor -1 
-	 * al atributo dorsal del jugador, procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
-	 * Para comprobar que el método funciona bien, crearemos una variable de tipo entero denominada dorsalEsperado cuyo 
-	 * valor será -1 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
+	 * Para ello llamaremos al método ponerDorsal con el Jugador j1, pasándole -5 como int dorsal. Si el método funciona 
+	 * adecuadamente, al ser -5 un número menor que 1, deberá asignar el valor -1 al atributo dorsal del jugador, 
+	 * procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
+	 * Para comprobar el buen funcionamiento del método, crearemos una variable de tipo entero denominada dorsalEsperado 
+	 * cuyo valor será -1 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
 	 * La prueba será satisfactoria si ambos valores son iguales
 	 */
 	
 	@Test
 	public void asignaDorsalNegativo() {
 		System.out.println("Test 4");
-		
-		Jugador j1 = new Jugador(0, 0, 0);
 		
 		j1.ponerDorsal(-5);
 		
@@ -103,10 +108,10 @@ class JugadorTest {
 	
 	/*
 	 * Ahora comprobaremos si el método ponerDorsal funciona adecuadamente al pasarle el atributo dorsal con el valor 33.
-	 * Para ello crearemos un objeto de la clase Jugador cuyo atributo dorsal sea 0, llamaremos al método ponerDorsal 
-	 * con dicho jugador, pasándole 33 como int dorsal. Si el método funciona adecuadamente, deberá asignar el valor -1 
-	 * al atributo dorsal del jugador, procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
-	 * Para comprobar que el método funciona correctamente, crearemos una variable de tipo entero denominada dorsalEsperado 
+	 * Para ello llamaremos al método ponerDorsal con el Jugador j1, pasándole 33 como int dorsal. Si el método funciona 
+	 * adecuadamente, al ser 33 un número mayor que 30, deberá asignar el valor -1 al atributo dorsal del jugador,
+	 * procederemos a crear una variable de tipo entero denominada dorsalObtenido. 
+	 * Para comprobar el buen funcionamiento del método, crearemos una variable de tipo entero denominada dorsalEsperado 
 	 * cuyo valor será -1 y lo compararemos con el valor de dorsalObtenido, mediante un assertEquals. 
 	 * La prueba será satisfactoria si ambos valores son iguales
 	 */
@@ -126,8 +131,8 @@ class JugadorTest {
 	}
 	
 	/*
-	 * Procedemos a probar el método estaExpulsado, para ello crearemos un jugador cuyos atributos numeroTrajetasAmarillas y 
-	 * numeroTarjetasRojas sean 0, llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
+	 * Procedemos a probar el método estaExpulsado, para ello llamaremos al método estaExpulsado con el Jugador j1, el cual tiene 
+	 * inicializados los atributos numeroTarjetasAmarillas y numeroTarjetasRojas a 0. Si el método funciona adecuadamente,
 	 * deberá devolver expulsado = false. Así utilizaremos un assertFalse para comprobar que esto sea así.
 	 */
 	
@@ -135,14 +140,13 @@ class JugadorTest {
 	public void expulsadoFalse() {
 		System.out.println("Test 6");
 		
-		Jugador j1 = new Jugador(0, 0, 0);
-		
 		assertFalse(j1.estaExpulsado());
 	}
 	
 	/*
-	 * Seguimos probando el método estaExpulsado, para ello crearemos un jugador cuyo atributo numeroTrajetasAmarillas sea 1 y 
-	 * numeroTarjetasRojas sea 0, llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
+	 * Seguimos probando el método estaExpulsado, para ello utilizaremos el Jugador j1, y mediante el método 
+	 * setNumeroTrajetasAmarillas, asignaremos el valor 1 a dicho atributo y dejaremos numeroTarjetasRojas a 0, 
+	 * llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
 	 * deberá devolver expulsado = false. Así utilizaremos un assertFalse para comprobar que esto sea así.
 	 */
 	
@@ -150,14 +154,15 @@ class JugadorTest {
 	public void expulsadoFalse2() {
 		System.out.println("Test 7");
 		
-		Jugador j1 = new Jugador(0, 1, 0);
+		j1.setNumeroTarjetasAmarillas(1);
 		
 		assertFalse(j1.estaExpulsado());
 	}
 	
 	/*
-	 * Seguimos probando el método estaExpulsado, para ello crearemos un jugador cuyo atributo numeroTrajetasAmarillas sea 0 y 
-	 * numeroTarjetasRojas sea 1, llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
+	 * Seguimos probando el método estaExpulsado, para ello utilizaremos el Jugador j1, y mediante el método 
+	 * setNumeroTrajetasRojas, asignaremos el valor 1 a dicho atributo y dejaremos numeroTarjetasAmarillas a 0, 
+	 * llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
 	 * deberá devolver expulsado = true. Así utilizaremos un assertTrue para comprobar que esto sea así.
 	 */
 	
@@ -165,14 +170,15 @@ class JugadorTest {
 	public void expulsadoTrueRoja() {
 		System.out.println("Test 8");
 		
-		Jugador j1 = new Jugador(0, 0, 1);
+		j1.setNumeroTarjetasRojas(1);
 		
 		assertTrue(j1.estaExpulsado());
 	}
 	
 	/*
-	 * Seguimos probando el método estaExpulsado, para ello crearemos un jugador cuyo atributo numeroTrajetasAmarillas sea 2 y 
-	 * numeroTarjetasRojas sea 0, llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
+	 * Seguimos probando el método estaExpulsado, para ello utilizaremos el Jugador j1. Mediante el método 
+	 * setNumeroTrajetasAmarillas, asignaremos el valor 2 a dicho atributo y dejaremos numeroTarjetasRojas a 0, 
+	 * llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
 	 * deberá devolver expulsado = true. Así utilizaremos un assertTrue para comprobar que esto sea así.
 	 */
 	
@@ -180,22 +186,25 @@ class JugadorTest {
 	public void expulsadoTrueAmarilla() {
 		System.out.println("Test 9");
 		
-		Jugador j1 = new Jugador(0, 2, 0);
+		j1.setNumeroTarjetasAmarillas(2);
 		
 		assertTrue(j1.estaExpulsado());
 	}
 	
 	/*
-	 * Seguimos probando el método estaExpulsado, para ello crearemos un jugador cuyo atributo numeroTrajetasAmarillas sea 2 y 
-	 * numeroTarjetasRojas sea 1, llamaremos al método estaExpulsado con dicho jugador. Si el método funciona adecuadamente,
-	 * deberá devolver expulsado = true. Así utilizaremos un assertTrue para comprobar que esto sea así.
+	 * Seguimos probando el método estaExpulsado, para ello utilizaremos el Jugador j1. Mediante el método 
+	 * setNumeroTrajetasAmarillas, asignaremos el valor 1 a dicho atributo y mediante el método setNumeroTarjetasRojas,
+	 * asignaremos el valor 2 a dicho atributo; llamaremos al método estaExpulsado con dicho jugador.
+	 * Si el método funciona adecuadamente, deberá devolver expulsado = true. Así utilizaremos un assertTrue para comprobar 
+	 * que esto sea así.
 	 */
 	
 	@Test
 	public void expulsadoTrue2() {
 		System.out.println("Test 10");
 		
-		Jugador j1 = new Jugador(0, 2, 1);
+		j1.setNumeroTarjetasAmarillas(2);
+		j1.setNumeroTarjetasRojas(1);
 		
 		assertTrue(j1.estaExpulsado());
 	}
