@@ -1,84 +1,134 @@
-package programa;
+package Soldado;
 /**
- * 
- * El objetivo de esta clase es determinar si un soldado <b> tiene suficientes balas para disparar </b>
- * y si <b> está vivo o muerto</b>
- * 
- * Tendrá dos métodos:
- * - <u>puedeDisparar(): boolean</u>
- * - <u>disparar(Soldado sol)</u>
+ * Clase que presenta a un soldado en un campo de tiro
  * 
  * 
- * @author María Moreno Rodríguez
+ * El obejetivo de esta clase es informar el<b>estado del objeto  Soldado<b>,
+ *  dependiendo de una serie de metodos, que en este caso nos informaran <u> si esta muerto</u> 
+ *  y el <u>número de balas</u> puede disparar.
+ * <br>
+ * <b>Atributos de la clase</b>
+ * <ul>
+ * <li>estaMuerto</li>
+ * <li>numeroBalas</li>
+ * </ul>
+ * 
+ * @author Elvira Medina
  * @version 1.0
- * 
+ * @since 3/11/2020
+ *
  */
 public class Soldado {
-
+	
+	//Datos privados de la clase
+	
 	/**
-	 * La clase tiene dos atributos privados:
-	 * - <b>estaMuerto</b> que es de tipo boolean y será <b>true</b> si el soldado está muerto
-	 * y <b>false</b> en caso de que no lo esté
-	 * - <b>numeroBalas</b> es de tipo entero e indica el número de balas que tiene el soldado
+	 * Muerte del soldado, este atributo puede contener tres valores diferentes
+	 * true, false y null
+	 * 
 	 */
 	
 	private boolean estaMuerto;
-	private int numeroBalas;
 	
-	//Generamos los getters y setters
-	
+	/**
+	 * Numero de balas que recibe el soldado, el numero de balas 
+	 * es un valor mayor que 0, no  admite negativos
+	 */
+
+    private int numeroBalas;
+    
+    
+    
+    //Getter and setters
+
 	public boolean isEstaMuerto() {
 		return estaMuerto;
 	}
+
 	public void setEstaMuerto(boolean estaMuerto) {
 		this.estaMuerto = estaMuerto;
 	}
+
 	public int getNumeroBalas() {
 		return numeroBalas;
 	}
+
 	public void setNumeroBalas(int numeroBalas) {
 		this.numeroBalas = numeroBalas;
 	}
 	
-	//Generamos el constructor por defecto
+	
+    /**
+     * <b>Constructor por defecto</b>
+     */
 	
 	public Soldado() {
 		super();
 	}
 	
-	//Generamos el constructor con todos los atributos	
+	/**
+	 * <b>Contructor con los datos privados de la clase</b>
+	 * <br>
+	 * @param <b>estaMuerto:</b> nos informa si el soldado esta muerto o no.
+	 * @param <b>numeroBalas:</b> representa el numero de balas que puede disparar el soldado
+	 */
+	
 	public Soldado(boolean estaMuerto, int numeroBalas) {
-			super();
-			this.estaMuerto = estaMuerto;
-			this.numeroBalas = numeroBalas;
+		super();
+		this.estaMuerto = estaMuerto;
+		this.numeroBalas = numeroBalas;
 	}
+    
 	
-	/**
-	 * El método <b>puedeDisparar</b> nos permite distinguir si el soldado tiene balas y, por tanto, puede disparar,
-	 * devolviendo <u>true</u>, o si por el contrario, no tiene balas y no puede disparar, devolviendo en ese caso 
-	 * <u>false</u>.
-	 * 
-	 * 
-	 * @return <b>true<7b> si numeroBalas es mayor de 0, <b>false</b> en caso contrario o si numeroBalas es igual a 0
-	 */
-	public boolean puedeDisparar() {
-		if (this.numeroBalas > 0)
-			return true;
-		
-		return false;
-	}
-	/**
-	 * El método <b>disparar</b> resta una unidad del número de balas del soldado que llama a dicho método, y 
-	 * cambia el atributo estaMuerto del soldado que pasamos al método a <u>true</u>. Como es void, no devuelve nada.
-	 * 
-	 * @param sol es un objeto de la clase Soldado
-	 * 
-	 */
-	public void disparar(Soldado sol) {
-		this.numeroBalas--;
-		
-		sol.estaMuerto=true;
-	}
-	
-}
 
+	
+	/**El metodo establece si se puede disparar, si el numero de balas es mayor que 0,
+	 * retorna true, se puede disparar. 
+	 * <br>
+	 * Si el numero de balas en menor que 0 retorna 
+	 * false no se puede disparar, porque no hay balas.
+	 * <br>
+	 * @author Elvira
+	 * @since 4/11/2020
+	 * @param <b>numeroBalas:</b> representa el numero de balas que tiene el soldado.No admite negativos.
+	 * @return <ul> 
+	 * 			<li>true: El soldado tieen balas, puede disparar.</li>
+	 * 			<li>false: El soldado no tieme balas, no puede disparar</li>
+	 */
+	
+    public boolean puedeDisparar() {
+
+        if(this.numeroBalas > 0) {
+
+                      return true;
+
+        }                          
+
+        return false;
+
+    }
+    
+    /**El metodo nos informa si un soldado puede disparar o no, si el numero de balas va decrementando y no puede 
+       disparar, el soldado termianara muerto.
+     * <br>
+     * El metodo decrementa el numero da balas
+     * <br>
+     * @author Elvira
+     * @param sol representa al Objeto Soldado
+     * @since 25/01/2021
+     * 
+     */
+    
+    public void disparar(Soldado sol) {
+    	
+    	
+        this.numeroBalas--;
+        sol.estaMuerto = true;
+        
+       
+    }
+
+	
+	
+
+}
