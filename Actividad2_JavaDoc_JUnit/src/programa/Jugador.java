@@ -1,28 +1,32 @@
 package programa;
+
 /**
- * El objetivo de esta clase es asignar un número de dorsal a los jugadores de un equipo hasta un máximo de 30 jugadores
- * y también determinar si el jugador está expulsado o no, en base al número de tarjetas rojas o amarillas que tenga.
+ * La clase <b>Jugador</b> define objetos de jugadores con información sobre su número de dorsal, 
+ * el número de tarjetas amarillas que ha recibido y el número de tarjetas rojas que ha recibido.
  * 
- * Tendrá dos métodos:
- * - <u>ponerDorsal(int Dorsal)</u>
- * - <u>estaExpulsado(): boolean</u>
- * 
- * @author María Moreno Rodríguez
+ * @author Álvaro Tercero
  * @version 1.0
  *
  */
+
 public class Jugador {
-/**
- * La clase posee tres atributos privados, y los tres son números de tipo entero:
- * - <b>dorsal</b>
- * - <b>numeroTarjetasAmarillas</b>
- * - <b>numeroTarjetasRojas</b>
- */
+	
+	/**
+	 * Número de dorsal que tiene el jugador.
+	 */
 	private int dorsal;
+	
+	/**
+	 * Número de tarjetas amarillas que ha recibido.
+	 */
 	private int numeroTarjetasAmarillas;
+	
+	/**
+	 * Número de tarjetas rojas que ha recibido.
+	 */
 	private int numeroTarjetasRojas;
 	
-	//Ahora generamos los getter y setter de los atributos
+	//Generamos los métodos get y set de cada atributo.
 	
 	public int getDorsal() {
 		return dorsal;
@@ -43,13 +47,11 @@ public class Jugador {
 		this.numeroTarjetasRojas = numeroTarjetasRojas;
 	}
 	
-	//Generamos el constrtuctor por defecto
+	//Generamos un constructor vacío y otro con todos los atributos.
 
 	public Jugador() {
 		super();
 	}
-	
-	//Generamos el constructor con todos los atributos
 	
 	public Jugador(int dorsal, int numeroTarjetasAmarillas, int numeroTarjetasRojas) {
 		super();
@@ -58,38 +60,23 @@ public class Jugador {
 		this.numeroTarjetasRojas = numeroTarjetasRojas;
 	}
 	
-/**
- * El método <b>ponerDorsal</b> permite asignar al jugador un número de dorsal entre el 1 y el 30, en caso de que el 
- * número de dorsal que se pase al método es menor de 1 o mayor de 30, el número de dorsal asignado al jugador será -1, 
- * por lo que se entiende que no formará parte del equipo.
- * 
- * 
- * @param dorsal es un número entero
- * 
- */
+	/**
+	 * Método que establece que el dorsal sea <u>un número entre 1 y 30</u>. Si no es así, establece el valor del dorsal en <u>-1</u>.
+	 * @param dorsal representa el número que el jugador lleva impreso en la camiseta.
+	 */
 	public void ponerDorsal(int dorsal) {
 		  if(dorsal >= 1 && dorsal <= 30) {
-
               this.dorsal = dorsal;
-
-		  }else {
-
+		  }
+		  else {
               this.dorsal = -1;
-
 		  }
 	}
 	
-	
 	/**
-	 * El método <b>estaExpulsado</b> permite determinar si un jugador está expulsado o no, para ello devuelve
-	 * un atributo de tipo boolean, denominado <u>expulsado</u>, que se inicializa con el valor <u>false</u>, 
-	 * de forma que si el jugador no tiene tarjetas ni amarillas ni rojas, o si tiene menos de 2 tarjetas amarillas,
-	 * devolverá dicho valor. Dentro del método se desarrollan estructuras de tipo if, de forma que si el jugador 
-	 * tiene dos tarjetas amarillas o una roja, el atributo expulsado devuelve el valor <u>true</u>.
-	 * 
-	 * 
-	 * @return <b>false</b> en caso de que el jugador no esté expulsado, o <b>true</b>, en caso de que sí lo esté.
-	 * 
+	 * Método que devuelve si el jugador ha sido expulsado o no dependiendo del número y del tipo de tarjetas recibidas.
+	 * @return Si el jugador ha recibido dos tarjetas amarillas o una tarjeta roja, devuelve <u>true</u>.
+	 * En otros casos devuelve <u>false</u>.
 	 */
 	
 	public boolean estaExpulsado() {

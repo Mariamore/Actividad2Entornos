@@ -1,31 +1,25 @@
 package programa;
+
 /**
+ * La clase <b>Soldado</b> define objetos de soldados con información sobre si está muerto o no y con el número de balas que posee.
  * 
- * El objetivo de esta clase es determinar si un soldado <b> tiene suficientes balas para disparar </b>
- * y si <b> está vivo o muerto</b>
- * 
- * Tendrá dos métodos:
- * - <u>puedeDisparar(): boolean</u>
- * - <u>disparar(Soldado sol)</u>
- * 
- * 
- * @author María Moreno Rodríguez
+ * @author Álvaro Tercero
  * @version 1.0
- * 
  */
+
 public class Soldado {
 
 	/**
-	 * La clase tiene dos atributos privados:
-	 * - <b>estaMuerto</b> que es de tipo boolean y será <b>true</b> si el soldado está muerto
-	 * y <b>false</b> en caso de que no lo esté
-	 * - <b>numeroBalas</b> es de tipo entero e indica el número de balas que tiene el soldado
+	 * Estado de vida del soldado. El valor <u>true</u> indica que está muerto. 
+	 * El valor <u>false</u> indica que está vivo.
 	 */
-	
 	private boolean estaMuerto;
+	/**
+	 * Número de balas que posee el soldado.
+	 */
 	private int numeroBalas;
 	
-	//Generamos los getters y setters
+	// Creamos los métodos get y set de cada atributo.
 	
 	public boolean isEstaMuerto() {
 		return estaMuerto;
@@ -40,13 +34,12 @@ public class Soldado {
 		this.numeroBalas = numeroBalas;
 	}
 	
-	//Generamos el constructor por defecto
+	// Creamos un constructor vacío y otro con todos los atributos.
 	
 	public Soldado() {
 		super();
 	}
 	
-	//Generamos el constructor con todos los atributos	
 	public Soldado(boolean estaMuerto, int numeroBalas) {
 			super();
 			this.estaMuerto = estaMuerto;
@@ -54,12 +47,9 @@ public class Soldado {
 	}
 	
 	/**
-	 * El método <b>puedeDisparar</b> nos permite distinguir si el soldado tiene balas y, por tanto, puede disparar,
-	 * devolviendo <u>true</u>, o si por el contrario, no tiene balas y no puede disparar, devolviendo en ese caso 
-	 * <u>false</u>.
+	 * Método que determina si el soldado puede disparar o no, dependiendo de si tiene balas.
 	 * 
-	 * 
-	 * @return <b>true<7b> si numeroBalas es mayor de 0, <b>false</b> en caso contrario o si numeroBalas es igual a 0
+	 * @return Si el número de balas es mayor que 0, devuelve <u>true</u>. Si es 0 o menor que 0, devuelve <u>false</u>.
 	 */
 	public boolean puedeDisparar() {
 		if (this.numeroBalas > 0)
@@ -67,12 +57,11 @@ public class Soldado {
 		
 		return false;
 	}
+	
 	/**
-	 * El método <b>disparar</b> resta una unidad del número de balas del soldado que llama a dicho método, y 
-	 * cambia el atributo estaMuerto del soldado que pasamos al método a <u>true</u>. Como es void, no devuelve nada.
+	 * Método que resta una bala al soldado y hace que éste pase a estar muerto.
 	 * 
-	 * @param sol es un objeto de la clase Soldado
-	 * 
+	 * @param sol representa un objeto de la clase Soldado.
 	 */
 	public void disparar(Soldado sol) {
 		this.numeroBalas--;

@@ -3,77 +3,105 @@ package junit5;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
 import programa.Soldado;
 
 class SoldadoTest {
+	
+	// Creamos un Test para probar el método puedeDisparar
 
-	/*
-	 * Primero testearemos si el método puedeDisparar devuelve true cuando numeroBalas es 
-	 * mayor que 0, para ello creamos un objeto soldado cuyo atributo numeroBalas es 20, y realizamos un assertTrue 
-	 * para comprobar que al ejecutar el método puedeDisparar con dicho soldado, este arroja true como resultado
-	 */
 	@Test
-	public void siPuedeDisparar() {
-		System.out.println("Test 1");
+	public void puedeDispararTest() {
+		Soldado soldado = new Soldado();
 		
-		Soldado sol = new Soldado(false, 20);
-		assertTrue(sol.puedeDisparar());
+		// Comenzamos indicándole que el soldado tiene 100 balas, por lo que sí puede disparar (true).
+		soldado.setNumeroBalas(100);
+		assertTrue(soldado.puedeDisparar());
+		
+		// Si establecemos el número de balas en 0, el soldado no podrá disparar (false).
+		soldado.setNumeroBalas(0);
+		assertFalse(soldado.puedeDisparar());
+		
+		// Si el número de balas es negativo, tampoco podrá disparar (false).
+		soldado.setNumeroBalas(-7);
+		assertFalse(soldado.puedeDisparar());
+	}
+	
+	// Creamos un test que compruebe que el método disparar reste una bala al número de balas del soldado.
+	
+	@Test
+	public void dispararBalasTest() {
+		Soldado soldado = new Soldado();
+		
+		/*
+		 *  Probamos otorgándole 0 balas al soldado. Comprobamos que el resultado del método sea igual
+		 *  a restarle 1 bala al número que tenía previamente.
+		 */
+		soldado.setNumeroBalas(0);
+		int resultadoEsperado = (soldado.getNumeroBalas() - 1);
+		soldado.disparar(soldado);
+		int resultadoObtenido = soldado.getNumeroBalas();
+		assertEquals(resultadoEsperado, resultadoObtenido);
+		
+		// Hacemos la misma prueba con 1 bala.
+		soldado.setNumeroBalas(1);
+		resultadoEsperado = (soldado.getNumeroBalas() - 1);
+		soldado.disparar(soldado);
+		resultadoObtenido = soldado.getNumeroBalas();
+		assertEquals(resultadoEsperado, resultadoObtenido);
+		
+		// Repetimos la misma prueba con 3 balas.
+		soldado.setNumeroBalas(3);
+		resultadoEsperado = (soldado.getNumeroBalas() - 1);
+		soldado.disparar(soldado);
+		resultadoObtenido = soldado.getNumeroBalas();
+		assertEquals(resultadoEsperado, resultadoObtenido);
 		
 	}
+	
 	/*
-	 * Ahora testearemos el caso contrario, para ello crearemos dos objetos de la clase Soldado, uno con 
-	 * numeroBalas = -1 y otro con numeroBalas = 0, y realizaremos un assertFalse con cada uno de ellos, 
-	 * para comprobar que al ejecutar el método con dichos objetos, el método efectivamente arroja false como resultado
+	 *  Comprobamos mediante un test que el método disparar siempre mate al soldado, como indica 
+	 *  el código aportado en el enunciado de la actividad. Para ello, el atributo estaMuerto 
+	 *  será true después de ejecutar el método.
 	 */
 	
 	@Test
-	public void noPuedeDisparar() {
-		System.out.println("Test 2");
+	public void dispararEstaMuertoTest() {
+		Soldado soldado = new Soldado();
 		
-		Soldado sol1 = new Soldado(false, 0);
-		Soldado sol2 = new Soldado(false, -1);
+		// Probamos con 0 balas y no estando muerto (false). Terminará muerto (true).
+		soldado.setNumeroBalas(0);
+		soldado.setEstaMuerto(false);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 		
-		assertFalse(sol1.puedeDisparar());
-		assertFalse(sol2.puedeDisparar());
-	}
-
-	/*
-	 * Ahora, testeamos el segundo método, disparar, de manera que tendremos que crear dos soldados con sus correspondientes 
-	 * atributos. En ambos, el atributo estaMuerto se inicializa a false, lo que indica que ambos soldados están vivos.
-	 * Tras ejecutar el método disparar, el cual será llamado por uno de los soldados, pasándole el otro dentro del método, 
-	 * el soldado sobre el cual se ejecuta el método, verá modificado su atributo estaMuerto a true. Así que utilizaremos un
-	 * assertTrue para comprobar este hecho.
-	 */
-	@Test
-	public void siMuere() {
-		System.out.println("Test 3");
+		// Probamos con 0 balas y estando muerto (true). Igualmente terminará muerto (true).
+		soldado.setNumeroBalas(0);
+		soldado.setEstaMuerto(true);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 		
-		Soldado sol1 = new Soldado(false, 15);
-		Soldado sol2 = new Soldado(false, 12);
+		// Realizamos las dos mismas comprobaciones con 3 balas. Seguirá acabando muerto (true).
+		soldado.setNumeroBalas(3);
+		soldado.setEstaMuerto(false);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 		
-		sol1.disparar(sol2);
+		soldado.setNumeroBalas(3);
+		soldado.setEstaMuerto(false);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 		
-		assertTrue(sol2.isEstaMuerto());
-	}
-	/*
-	 * También comprobaremos que al ejecutar el método disparar, el valor del atributo numeroBalas de sol1 ha disminuido en una 
-	 * unidad, para ello crearemos una variable de tipo entero denominada numeroBalasEsperado, y lo compararemos con el número de
-	 * balas de sol1, utilizando un assertEquals. La prueba será satisfactoria en caso de que numeroBalasEsperado y numeroBalasObtenido
-	 * sean iguales.
-	 */
-	@Test
-	public void disminuyeBalas() {
-		System.out.println("Test 4");
+		// Realizamos las dos mismas comprobaciones con un número negativo de balas (-5). De nuevo termina muerto (true).
+		soldado.setNumeroBalas(-5);
+		soldado.setEstaMuerto(false);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 		
-		Soldado sol1 = new Soldado(false, 15);
-		Soldado sol2 = new Soldado(false, 12);
-		
-		sol1.disparar(sol2);
-		
-		int numeroBalasEsperado = 14;
-		int numeroBalasObtenido = sol1.getNumeroBalas();
-		
-		assertEquals(numeroBalasEsperado, numeroBalasObtenido);
+		soldado.setNumeroBalas(-5);
+		soldado.setEstaMuerto(true);
+		soldado.disparar(soldado);
+		assertTrue(soldado.isEstaMuerto());
 	}
 
 }
