@@ -15,7 +15,7 @@ package Soldado;
  * 
  * @author Elvira Medina
  * @version 1.0
- * @since 3/11/2020
+ * 
  *
  */
 public class Soldado {
@@ -89,7 +89,6 @@ public class Soldado {
 	 * false no se puede disparar, porque no hay balas.
 	 * <br>
 	 * @author Elvira
-	 * @since 4/11/2020
 	 * @param <b>numeroBalas:</b> representa el numero de balas que tiene el soldado.No admite negativos.
 	 * @return <ul> 
 	 * 			<li>true: El soldado tieen balas, puede disparar.</li>
@@ -115,7 +114,6 @@ public class Soldado {
      * <br>
      * @author Elvira
      * @param sol representa al Objeto Soldado
-     * @since 25/01/2021
      * 
      */
     
