@@ -69,7 +69,7 @@ public class JugadorTest {
 		public void asignaDorsalMayor30() {
 			System.out.println("Test 5");
 			
-			Jugador j1 = new Jugador(0, 0, 0);
+			Jugador j1 = new Jugador();
 			
 			j1.ponerDorsal(33);
 			

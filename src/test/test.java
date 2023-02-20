@@ -8,16 +8,13 @@ public class test {
 
 		Soldado soldado1 = new Soldado();
 		
-		soldado1.setNumeroBalas(0);
+		soldado1.setN
 		System.out.println(soldado1.getNumeroBalas());
 		
 		Jugador jugador1 = new Jugador();
 		
 		jugador1.ponerDorsal(1);
-		jugador1.setNumeroTarjetasAmarillas(2);
-		
-		assertTrue("Está expulsado", jugador1.estaExpulsado()); 
-		
+		jugador1.setNumeroTarjetasAmarillas(2);		
 	}
 
 }

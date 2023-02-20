@@ -1,11 +1,11 @@
 package dao;
 
 /**
- * Esta es la clase jugador. 
+ * Esta es la clase jugador. \n
  * Puedes definir a cada uno de los jugadores de un equipo de futbol, con su numero de dorsal.
  * Puedes añadir y consultar sus tarjetas amarillas y rojas, y según eso saber si están expulsados.
  * 
- * @author Grupo6 de Entornos de Desarrollo DAM
+ * @author Tatiana Villa
  */
 public class Jugador {
 
@@ -25,7 +25,7 @@ public class Jugador {
 
         /**
          * setDorsal sirve para ponerle el numero del dorsal asignarle el numero de dorsal al jugador
-         * @param Numero entero con el dorsal asignado
+         * @param dorsal Numero entero con el dorsal asignado
          */
 		public void setDorsal(int dorsal) {
 			this.dorsal = dorsal;
@@ -57,7 +57,7 @@ public class Jugador {
 
         /**
          * ponerDorsal sirve para asignar el numero de dorsal al jugador
-         * @param Numero entero con el dorsal asignado (1-30)
+         * @param dorsal Numero entero con el dorsal asignado (1-30)
          */
         public void ponerDorsal(int dorsal) {
 
