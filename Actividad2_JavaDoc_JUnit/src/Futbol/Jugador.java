@@ -106,7 +106,10 @@ public class Jugador {
                         this.dorsal = -1;
 
           }
-	  }              
+	  }  
+	  
+	  
+	  
 	  /**
 	   * Metodo que nos informa si un jugador esta expulsado, dependiendo 
 	   * de las tarjetas amarillas y  tarjetas rojas que tenga
