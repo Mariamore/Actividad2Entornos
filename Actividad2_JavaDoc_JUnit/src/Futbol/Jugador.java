@@ -7,7 +7,7 @@ package Futbol;
 	 * <br>
 	 * @author Elvira
 	 * @version 1.0
-	 * @since 22/5/2022
+	 * 
 	 *
 	 */
 public class Jugador {
@@ -89,7 +89,6 @@ public class Jugador {
 	 * El dorsal que contiene el jugador es apto o no para poder jugar
 	 * <br>
 	 * @author Elvira
-	 * @since 15/09/2022
 	 * @param <b>dorsal:</b> representa el numero con el que puede jugar el jugador
 	 * @return<ul>
      *        <li> -1: Si el dorsal para porder jugar es invalido par apoder jugar</li>
@@ -113,7 +112,6 @@ public class Jugador {
 	   * de las tarjetas amarillas y  tarjetas rojas que tenga
 	   * <br>
 	   * @author Elvira
-	   * @since 16/09/2022
 	   * @return <ul>
      *           <li>True: El jugador es expulsado</li>
      *           <li>False: El jugador no esta expulsado</li>
