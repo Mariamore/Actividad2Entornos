@@ -1,4 +1,5 @@
 package programa;
+
 /**
  * 
  * El objetivo de esta clase es determinar si un soldado <b> tiene suficientes balas para disparar </b>
@@ -13,16 +14,17 @@ package programa;
  * @version 1.0
  * 
  */
+
 public class Soldado {
 
 	/**
-	 * La clase tiene dos atributos privados:
-	 * - <b>estaMuerto</b> que es de tipo boolean y será <b>true</b> si el soldado está muerto
-	 * y <b>false</b> en caso de que no lo esté
-	 * - <b>numeroBalas</b> es de tipo entero e indica el número de balas que tiene el soldado
+	 * Estado de vida del soldado. El valor <u>true</u> indica que está muerto. 
+	 * El valor <u>false</u> indica que está vivo.
 	 */
-	
 	private boolean estaMuerto;
+	/**
+	 * Número de balas que posee el soldado.
+	 */
 	private int numeroBalas;
 	
 	//Generamos los getters y setters
@@ -46,7 +48,8 @@ public class Soldado {
 		super();
 	}
 	
-	//Generamos el constructor con todos los atributos	
+	//Generamos el constructor con todos los atributos
+	
 	public Soldado(boolean estaMuerto, int numeroBalas) {
 			super();
 			this.estaMuerto = estaMuerto;
@@ -67,6 +70,7 @@ public class Soldado {
 		
 		return false;
 	}
+	
 	/**
 	 * El método <b>disparar</b> resta una unidad del número de balas del soldado que llama a dicho método, y 
 	 * cambia el atributo estaMuerto del soldado que pasamos al método a <u>true</u>. Como es void, no devuelve nada.
